@@ -1,0 +1,212 @@
+{
+  "name": "claude-code-chat",
+  "displayName": "Claude Code Chat",
+  "description": "Beautiful Claude Code Chat Interface for VS Code",
+  "version": "1.0.5",
+  "publisher": "AndrePimenta",
+  "author": "Andre Pimenta",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrepimenta/claude-code-chat"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "engines": {
+    "vscode": "^1.94.0"
+  },
+  "categories": [
+    "Other",
+    "AI",
+    "Chat",
+    "Machine Learning",
+    "Snippets",
+    "Programming Languages",
+    "Education",
+    "Testing",
+    "Formatters",
+    "Linters"
+  ],
+  "keywords": [
+    "claude code",
+    "code explanation",
+    "code generation",
+    "code summary",
+    "code transform",
+    "vibe coding",
+    "prompt language",
+    "copilot",
+    "claude",
+    "ai",
+    "assistant",
+    "chatbot",
+    "chat",
+    "anthropic",
+    "code",
+    "programming",
+    "development",
+    "productivity"
+  ],
+  "icon": "icon.png",
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "claude-code-chat.openChat",
+        "title": "Open Claude Code Chat",
+        "category": "Claude Code Chat",
+        "icon": "icon.png"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "claude-code-chat.openChat",
+        "key": "ctrl+shift+c",
+        "mac": "cmd+shift+c"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "claude-code-chat.openChat"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "claude-code-chat.openChat",
+          "group": "claude@1",
+          "when": "editorTextFocus"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "claude-code-chat.openChat",
+          "group": "navigation@1",
+          "when": "true"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "claude-code-chat.openChat",
+          "group": "claude@1"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "claude-code-chat.openChat",
+          "group": "claude@1"
+        }
+      ],
+      "scm/title": [
+        {
+          "command": "claude-code-chat.openChat",
+          "group": "navigation@1",
+          "when": "true"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "claude-code-chat.openChat",
+          "group": "navigation@1",
+          "when": "view == workbench.explorer.fileView"
+        }
+      ],
+      "touchBar": [
+        {
+          "command": "claude-code-chat.openChat",
+          "group": "editing",
+          "when": "true"
+        }
+      ],
+      "menuBar/file": [
+        {
+          "command": "claude-code-chat.openChat",
+          "group": "1_new@1"
+        }
+      ]
+    },
+    "views": {
+      "claude-code-chat": [
+        {
+          "id": "claude-code-chat.chat",
+          "type": "webview",
+          "name": "Claude Code Chat",
+          "when": "true",
+          "icon": "icon.png",
+          "contextualTitle": "Claude Code Chat"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "claude-code-chat",
+          "title": "Claude Code Chat",
+          "icon": "icon.png"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Claude Code Chat",
+      "properties": {
+        "claudeCodeChat.wsl.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable WSL integration for running Claude"
+        },
+        "claudeCodeChat.wsl.distro": {
+          "type": "string",
+          "default": "Ubuntu",
+          "description": "WSL distribution name (e.g., Ubuntu, Debian)"
+        },
+        "claudeCodeChat.wsl.nodePath": {
+          "type": "string",
+          "default": "/usr/bin/node",
+          "description": "Path to Node.js in the WSL distribution"
+        },
+        "claudeCodeChat.wsl.claudePath": {
+          "type": "string",
+          "default": "/usr/local/bin/claude",
+          "description": "Path to Claude executable in the WSL distribution"
+        },
+        "claudeCodeChat.thinking.intensity": {
+          "type": "string",
+          "enum": [
+            "think",
+            "think-hard",
+            "think-harder",
+            "ultrathink"
+          ],
+          "default": "think",
+          "description": "Thinking mode intensity level. Higher levels provide more detailed reasoning but consume more tokens."
+        },
+        "claudeCodeChat.permissions.yoloMode": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable Yolo Mode to skip all permission checks. Use with caution as Claude can execute any command without asking."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.94.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^3.5.0",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3"
+  }
+}
