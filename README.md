@@ -3,16 +3,15 @@
 [![Claude Code](https://img.shields.io/badge/Powered%20by-Claude%20Code-orange?style=for-the-badge)](https://claude.ai/code)
 [![TypeScript](https://img.shields.io/badge/Built%20with-TypeScript-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 
-A VSCode extension for Claude Code Chat, modified from [andrepimenta/claude-code-chat](https://github.com/andrepimenta/claude-code-chat), supporting invocation of Claude Code Router via [musistudio/claude-code-router](https://github.com/musistudio/claude-code-router), providing a more flexible code interaction experience.
+🤖 A **VSCode extension** for Claude Code Chat, modified from [andrepimenta/claude-code-chat](https://github.com/andrepimenta/claude-code-chat), supporting invocation of Claude Code Router via [musistudio/claude-code-router](https://github.com/musistudio/claude-code-router), providing a more flexible code interaction experience.
 
-🤖 **Built by Claude Code for Claude Code** - This extension was entirely developed using Claude Code itself. Claude Code created its own chat interface!
 ---
 
 ## Features
 
 - Integrates Claude Code chat interface within VSCode  
 - Supports Claude Code Router as the underlying model backend  
-- Modified the original calls to Claude Code to adapt to Claude Code Router  
+- Added options to adjust the Claude Code call path to accommodate Claude Code Router.  
 - Provides a user-friendly interface supporting code interaction and suggestions  
 - Retains other features from [andrepimenta/claude-code-chat](https://github.com/andrepimenta/claude-code-chat)
 
@@ -53,8 +52,9 @@ A VSCode extension for Claude Code Chat, modified from [andrepimenta/claude-code
 - After starting the extension, the chat sidebar will open  
 - Enter questions or code requests; the extension sends them to Claude Code Router and returns results  
 - Supports multi-turn conversation for easier code debugging and coding assistance  
-- You can adjust Claude Code Router access parameters in the extension settings
+- You can adjust the path of Claude Code in the extension settings to switch between claude and ccr code at any time.
 
+![Plug-in settings](image.png)
 ---
 
 ## Project Structure
