@@ -170,6 +170,11 @@
           "default": "/usr/local/bin/claude",
           "description": "Path to Claude executable in the WSL distribution"
         },
+        "claudeCodeChat.claudePath": {
+          "type": "string",
+          "default": "claude",
+          "description": "Path to Claude executable on Windows or non-WSL environments"
+        },
         "claudeCodeChat.thinking.intensity": {
           "type": "string",
           "enum": [

@@ -512,6 +512,7 @@ class ClaudeChatProvider {
 		const wslDistro = config.get<string>('wsl.distro', 'Ubuntu');
 		const nodePath = config.get<string>('wsl.nodePath', '/usr/bin/node');
 		const claudePath = config.get<string>('wsl.claudePath', '/usr/local/bin/claude');
+		const claudePathWindows = config.get<string>('claudePath', 'claude');
 
 		let claudeProcess: cp.ChildProcess;
 
@@ -532,7 +533,7 @@ class ClaudeChatProvider {
 		} else {
 			// Use native claude command
 			console.log('Using native Claude command');
-			claudeProcess = cp.spawn('ccr code', args, {
+			claudeProcess = cp.spawn(claudePathWindows, args, {
 				shell: process.platform === 'win32',
 				cwd: cwd,
 				stdio: ['pipe', 'pipe', 'pipe'],
@@ -944,13 +945,14 @@ class ClaudeChatProvider {
 		const wslDistro = config.get<string>('wsl.distro', 'Ubuntu');
 		const nodePath = config.get<string>('wsl.nodePath', '/usr/bin/node');
 		const claudePath = config.get<string>('wsl.claudePath', '/usr/local/bin/claude');
+		const claudePathWindows = config.get<string>('claudePath', 'claude');
 
 		// Open terminal and run claude login
 		const terminal = vscode.window.createTerminal('Claude Login');
 		if (wslEnabled) {
 			terminal.sendText(`wsl -d ${wslDistro} ${nodePath} --no-warnings --enable-source-maps ${claudePath}`);
 		} else {
-			terminal.sendText('claude');
+			terminal.sendText(`${claudePathWindows}`);
 		}
 		terminal.show();
 
@@ -2147,6 +2149,7 @@ class ClaudeChatProvider {
 			'wsl.distro': config.get<string>('wsl.distro', 'Ubuntu'),
 			'wsl.nodePath': config.get<string>('wsl.nodePath', '/usr/bin/node'),
 			'wsl.claudePath': config.get<string>('wsl.claudePath', '/usr/local/bin/claude'),
+			'claudePath': config.get<string>('claudePath', 'claude'),
 			'permissions.yoloMode': config.get<boolean>('permissions.yoloMode', false)
 		};
 
@@ -2235,6 +2238,7 @@ class ClaudeChatProvider {
 		const wslDistro = config.get<string>('wsl.distro', 'Ubuntu');
 		const nodePath = config.get<string>('wsl.nodePath', '/usr/bin/node');
 		const claudePath = config.get<string>('wsl.claudePath', '/usr/local/bin/claude');
+		const claudePathWindows = config.get<string>('claudePath', 'claude');
 
 		// Build command arguments
 		const args = ['/model'];
@@ -2249,7 +2253,7 @@ class ClaudeChatProvider {
 		if (wslEnabled) {
 			terminal.sendText(`wsl -d ${wslDistro} ${nodePath} --no-warnings --enable-source-maps ${claudePath} ${args.join(' ')}`);
 		} else {
-			terminal.sendText(`claude ${args.join(' ')}`);
+			terminal.sendText(`${claudePathWindows} ${args.join(' ')}`);
 		}
 		terminal.show();
 
@@ -2272,6 +2276,7 @@ class ClaudeChatProvider {
 		const wslDistro = config.get<string>('wsl.distro', 'Ubuntu');
 		const nodePath = config.get<string>('wsl.nodePath', '/usr/bin/node');
 		const claudePath = config.get<string>('wsl.claudePath', '/usr/local/bin/claude');
+		const claudePathWindows = config.get<string>('claudePath', 'claude');
 
 		// Build command arguments
 		const args = [`/${command}`];
@@ -2286,7 +2291,7 @@ class ClaudeChatProvider {
 		if (wslEnabled) {
 			terminal.sendText(`wsl -d ${wslDistro} ${nodePath} --no-warnings --enable-source-maps ${claudePath} ${args.join(' ')}`);
 		} else {
-			terminal.sendText(`claude ${args.join(' ')}`);
+			terminal.sendText(`${claudePathWindows} ${args.join(' ')}`);
 		}
 		terminal.show();
 
